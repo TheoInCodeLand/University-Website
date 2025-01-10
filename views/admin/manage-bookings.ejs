@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
+      
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/manage-posts.css">
+    <script type="text/javascript"
+          src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+      (function(){
+          emailjs.init({
+            publicKey: "L_GD27HegZ8d6Q0Xz",
+          });
+      })();
+    </script>
+    <!-- L_GD27HegZ8d6Q0Xz -->
+    
+    <script src="/js/emailjs.js"></script>
+</head>
+<body>
+  
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="#" class="navbar-brand">BookingManager</a>
+      <form action="/posts/search-posts" method="get" class="search-form">
+        <input type="text" id="search" name="search" placeholder="Search bookings..." required>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+      <ul class="navbar-menu">
+        <li><a href="/admin/dashboard" class="navbar-link" style="background-color: rgba(255, 58, 36, 0.621); padding:0.6em; border-radius:10px;">dashboard</a></li>
+      </ul>
+    </div>
+  </nav>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Student Number</th>
+          <th>Email</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Venue</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% bookings.forEach(booking => { %>
+          <tr>
+            <td><%= booking.name %></td>
+            <td><%= booking.student_number %></td>
+            <td><%= booking.email %></td>
+            <td><%= booking.date %></td>
+            <td><%= booking.time %></td>
+            <td><%= booking.venue %></td>
+            <td><%= booking.status %></td>
+            <td class="accept-decline">
+              <!-- <button type="submit" class="btn btn-success" onclick="sendMail()"><i class="fa-solid fa-check"></i></button> -->
+                
+              <!-- Show actions only for pending bookings -->
+              <% if (booking.status === 'Pending') { %>
+                <form action="/booking/admin/accept/<%= booking.id %>" method="POST" class="inline-form">
+                  <button type="submit" class="btn btn-success" onclick="sendMail('<%= booking.name %>', '<%= booking.student_number %>', '<%= booking.email %>', '<%= booking.date %>', '<%= booking.time %>', '<%= booking.venue %>', '<%= booking.status %>' )"><i class="fa-solid fa-check"></i></button>
+                </form>
+                <form action="https://formsubmit.co/hlangadee@gmail.com" method="POST">
+                  <input type="text" style="display: none;" name="Message" value="A client would like to book you for a photography session, below are relevent details and clients's contacts, please contact them.">
+                  <input type="text" style="display: none;" name="Clien-name" value="<%= booking.name %>">
+                  <input type="text" style="display: none;" name="Client-Student-Number" value="<%= booking.student_number %>">
+                  <input type="text" style="display: none;" name="Booking-Date" value="<%= booking.date %>">
+                  <input type="text" style="display: none;" name="Booking-Venue" value="<%= booking.venue %>">
+                  <input type="email" style="display: none;" name="Client-email" value="<%= booking.email %>">
+                  <button type="submit" class="btn btn-success" style="background: blue;">
+                    <i class="fa-solid fa-paper-plane"></i>
+                  </button>
+              </form>
+                <form action="/booking/admin/decline/<%= booking.id %>" method="POST" class="inline-form">
+                  <button type="submit" class="btn btn-danger"><i class="fa-solid fa-xmark"></i></button>
+                </form>
+              <% } else { %>
+                <span><%= booking.status %></span>  <!-- Display the status if not pending -->
+              <% } %>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+    <%- include('../partials/footer') %>
+    <script>
+      // script.js
+document.getElementById('sendEmailBtn').addEventListener('click', function() {
+  // Show a loading message
+  const messageDiv = document.getElementById('message');
+  messageDiv.textContent = 'Sending email...';
+
+  // Send a POST request to the back-end service
+  fetch('/send-email', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          to: 'recipient@example.com', // Replace with the recipient's email
+          subject: 'Test Email',
+          message: 'This is a test email sent from the front end.'
+      })
+  })
+  .then(response => {
+      if (response.ok) {
+          return response.json();
+      } else {
+          throw new Error('Network response was not ok.');
+      }
+  })
+  .then(data => {
+      messageDiv.textContent = 'Email sent successfully!';
+  })
+  .catch(error => {
+      console.error('Error sending email:', error);
+      messageDiv.textContent = 'Error sending email. Please try again.';
+  });
+});
+    </script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Calendar Events</title>
+  <link rel="stylesheet" href="/css/style.css"> <!-- Link your external CSS file -->
+  <style>
+    /* General styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    .navbar {
+      background-color: #333;
+      padding: 1rem;
+      color: #fff;
+    }
+
+    .navbar h2 {
+      font-size: 1.5rem;
+    }
+
+    .page-title {
+      text-align: center;
+      margin: 2rem 0 1rem;
+      font-size: 2rem;
+      color: #333;
+    }
+
+    /* Form styling */
+    .event-form {
+      background-color: #fff;
+      padding: 2rem;
+      margin: 2rem auto;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .event-form input,
+    .event-form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    .event-form button {
+      display: block;
+      margin: 1rem auto 0;
+      background-color: #686868;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .event-form button:hover {
+      transform: scale(0.97);
+    }
+
+    /* Event List */
+    .event-list {
+      padding: 2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .event-list li {
+      list-style: none;
+      background-color: #fff;
+      margin: 0.5rem 0;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .event-list li strong {
+      color: #007bff;
+    }
+
+    .event-list button {
+      background-color: #ff00009e;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .event-list button:hover {
+      transform: scale(0.97);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h2>Manage Calendar Events</h2>
+  </nav>
+
+  <h1 class="page-title">Manage Events</h1>
+
+  <!-- Event Form for Adding New Events -->
+  <form id="addEventForm" method="POST" action="/calendar/events" class="event-form">
+    <input type="text" name="title" placeholder="Event Title" required>
+    <textarea name="description" placeholder="Event Description" rows="3" required></textarea>
+    <input type="date" name="event_date" required>
+    <input type="time" name="event_time" required>
+    <input type="text" name="location" placeholder="Event Location" required>
+    <input type="file" name="picture" accept="image/*" required>
+    <button type="submit">Add Event</button>
+  </form>
+
+  <!-- List of Existing Events -->
+  <ul id="eventList" class="event-list">
+    <% events.forEach(event => { %>
+      <li>
+        <strong><%= event.title %></strong> - <%= event.event_date %>
+        <button onclick="deleteEvent('<%= event.id %>')">Delete</button>
+      </li>
+    <% }) %>
+  </ul>
+
+  <script>
+    async function deleteEvent(eventId) {
+      try {
+        const response = await fetch(`/calendar/events/${eventId}`, {
+          method: 'DELETE',
+        });
+        if (response.ok) {
+          location.reload(); // Refresh the page to reflect the changes
+        } else {
+          alert('Failed to delete event');
+        }
+      } catch (error) {
+        console.error('Error deleting event:', error);
+      }
+    }
+  </script>
+</body>
+</html>

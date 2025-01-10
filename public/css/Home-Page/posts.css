@@ -1,0 +1,131 @@
+.posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    height: 98vh;
+    gap: 20px; /* Space between posts */
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+  
+#search-input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+  
+#search-button {
+    padding: 10px;
+    background-color: #180081;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+  
+#search-button i {
+    font-size: 16px;
+}
+
+.post {
+    background-color: #f8f9fa00;
+    padding: 15px;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3em;
+}
+
+.post-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.post-location,
+.post-date,
+.post-category {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.post-image {
+    width: 100%; /* Responsive image */
+    border-radius: 3px;
+    margin: 10px 0;
+}
+
+.post-description {
+    margin: 10px 0;
+}
+
+.comments-section {
+    border-top: 1px solid #ddd;
+    max-height: 10vh;
+    overflow-y: auto;
+}
+
+.comment {
+    font-size: 0.8em;
+    margin: 5px 0;
+}
+
+.comment-input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.comment-button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.comment-button:hover {
+    background-color: #0056b3;
+}
+
+.posts::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in Chrome, Safari, and Opera */
+}
+
+.action-btns {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5em;
+    padding: 0.5em 0em;
+}
+
+.action-btns button {
+    background: none;
+    border: none;
+    font-size: x-large;
+    display: flex;
+    align-items: center;
+    gap: 0.2em;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out;
+}
+
+.action-btns button:hover {
+    transform: scale(0.95);
+}
+
+.hidden {
+    display: none;
+}
+
+.comments-section::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in Chrome, Safari, and Opera */
+}

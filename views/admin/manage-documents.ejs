@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Documents</title>
+  <link rel="stylesheet" href="/css/Admin-Styles/documents.css"> <!-- Link to your CSS file -->
+  <link rel="stylesheet" href="/css/Home-Page/Header.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="#" class="navbar-brand">DocManager</a>
+      <ul class="navbar-menu">
+        <li><a href="#manage-docs" class="navbar-link">Manage Documents</a></li>
+        <li><a href="/admin/dashboard" class="navbar-link" style="background-color: rgba(255, 58, 36, 0.621); padding:0.6em; border-radius:10px;">dashboard</a></li>
+      </ul>
+      
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Document Management</h1>
+      <p>Upload and manage your documents efficiently.</p>
+      <a href="#manage-docs" class="btn btn-primary">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Document Management Section -->
+  <h1 id="manage-docs" class="page-title">Manage Documents</h1>
+
+  <!-- Form to upload a new document -->
+  <form action="/documents/admin/upload" method="POST" enctype="multipart/form-data" class="upload-form">
+    <div class="form-group">
+      <label for="doc_title">Document Title:</label>
+      <input type="text" id="doc_title" name="doc_title" required>
+    </div>
+
+    <div class="form-group">
+      <label for="doc_description">Document Description:</label>
+      <textarea id="doc_description" name="doc_description" rows="3" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="document">Upload Document (PDF/Word/Excel/PPT):</label>
+      <input type="file" id="document" name="document" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Upload Document</button>
+  </form>
+
+  <!-- Display uploaded documents in cards -->
+  <div class="document-cards">
+    <% documents.forEach(doc => { %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= doc.doc_title %></h5>
+          <p class="card-text"><%= doc.doc_description %></p>
+          <p class="card-text"><small class="text-muted">Uploaded on <%= doc.upload_date %></small></p>
+          <!-- <div style="display: flex; justify-content:space-between; width:100%;"> -->
+            <a href="/uploads/documents/<%= doc.file_name %>" target="_blank" class="btn btn-primary">Download Document</a>
+            <form action="/documents/admin/delete/<%= doc.id %>" method="POST" class="inline-form">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form></div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+
+  <%- include('../partials/footer') %>
+
+</body>
+</html>

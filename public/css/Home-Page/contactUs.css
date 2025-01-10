@@ -1,0 +1,108 @@
+.about-us {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 50px 20px;
+    margin-top: 3em;
+  }
+  
+  .about-us .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .about-us h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .about-us h2 {
+    font-size: 1.8rem;
+    margin-top: 30px;
+    color: #fc9700;
+  }
+  
+  .about-us p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+  
+  .about-us ul {
+    margin: 20px 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .about-us ul li {
+    margin-bottom: 15px;
+    padding-left: 20px;
+    position: relative;
+  }
+  
+  .about-us ul li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: #000b6f;
+    font-size: 1.2rem;
+  }
+  
+  .about-us a {
+    color: #000b6f;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .about-us a:hover {
+    text-decoration: underline;
+  }
+  #calendar {
+    margin: 2rem auto;
+    max-width: 900px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-event-section {
+    margin: 2rem auto;
+    max-width: 600px;
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  input[type="text"],
+  textarea,
+  input[type="date"],
+  input[type="time"] {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  button {
+    padding: 0.7rem 1.5rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }

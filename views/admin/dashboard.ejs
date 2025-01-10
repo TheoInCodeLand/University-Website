@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <style>
+    /* General styling */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: white;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    /* Card container styling */
+    ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* Card styling */
+    li {
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      width: 150px;
+      transition: transform 0.3s ease;
+      overflow: hidden;
+    }
+
+    li:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Link styling */
+    a {
+      display: block;
+      color: #333;
+      text-decoration: none;
+      padding: 20px;
+      font-weight: bold;
+    }
+
+    a:hover {
+      color: #1a73e8;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to the Admin Dashboard</h1>
+  <ul>
+    <li><a href="/admin/posts">Manage Posts</a></li>
+    <li><a href="/admin/bookings">Manage Bookings</a></li>
+    <li><a href="/admin/documents">Manage Documents</a></li>
+    <li><a href="/admin/manage-calendar-events">Manage Calender</a></li>
+    <li><a href="/admin/announcements">Manage Announcements</a></li>
+    <li><a href="/auth/logout">Logout</a></li>
+  </ul>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Posts</title>
+    <link rel="stylesheet" href="/css/manage-posts.css"> <!-- Link to CSS file -->
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="#" class="navbar-brand">PostManager</a>
+      <form action="/posts/search-posts" method="get" class="search-form">
+        <input type="text" id="search" name="search" placeholder="Search posts..." required>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+      <ul class="navbar-menu">
+        <li><a href="/admin/dashboard" class="navbar-link" style="background-color: rgba(255, 58, 36, 0.621); padding:0.6em; border-radius:10px;">dashboard</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Form to create a new post -->
+  <div class="body-container">
+    <section id="create-post">
+    <form action="/posts/admin/new" method="POST" enctype="multipart/form-data" class="post-form">
+
+        <h3>Add Post</h3>
+        <br><br>
+      <div class="form-group">
+        <input type="text" id="title" name="title" placeholder="Post Title" required>
+      </div>
+      <div class="form-group">
+        <textarea id="description" name="description" rows="4" placeholder="Post Description" required></textarea>
+      </div>
+      <div class="form-group">
+        <select name="category" id="category">
+          <option value="academics">Academics</option>
+          <option value="sports">Sports</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="date" id="date" name="date" placeholder="Post Date" required>
+      </div>
+      <div class="form-group">
+        <input type="text" id="location" name="location" placeholder="Post Location" required>
+      </div>
+      <div class="form-group">
+        <input type="file" id="media" name="media" accept="image/*,video/*" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Create Post</button>
+    </form>
+  </section>
+
+  <!-- Section to manage existing posts -->
+  <main id="manage-posts">
+    <h2 class="section-title">Manage Posts</h2>
+    <div class="main-container">
+      <% posts.forEach(post => { %>
+        <div class="card-container">
+          <div class="card">
+            <% if (post.media_url) { %>
+              <% if (post.media_url.endsWith('.mp4')) { %>
+                <video width="100" controls>
+                  <source src="/<%= post.media_url %>" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              <% } else { %>
+                <img src="/<%= post.media_url %>" alt="Post media" width="100">
+              <% } %>
+            <% } %>
+            <h5 class="card-title"><%= post.title %></h5>
+            <p class="card-text">Category: <%= post.category %></p>
+            <form action="/posts/admin/delete/<%= post.id %>" method="POST" class="inline-form">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </main>
+</div>
+
+
+</body>
+</html>

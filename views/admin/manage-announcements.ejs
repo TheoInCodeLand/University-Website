@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/css/Admin-Styles/announcements.css">
+  <link rel="stylesheet" href="/css/Home-Page/Header.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="logo">
+      <h1>AnnouncementManager</h1>
+    </div>
+    
+    <button class="btn"><a href="/admin/dashboard" >Dashboard</a></button>
+  </nav>
+  
+  <div class="container">
+    <div class="left">
+      <h1>Create a New Announcement</h1>
+      <form action="/announcements/admin/new" method="POST">
+        <label for="announcement_text">Announcement Text:</label>
+        <div class="form-group">
+          <textarea id="announcement_text" name="announcement_text" rows="4" required placeholder="Write Announcement Here!"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Announcement</button>
+      </form>
+    </div>
+
+    <div class="right">
+      <h2>Current Announcements</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Announcement</th>
+            <th>Posted On</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% announcements.forEach(announcement => { %>
+            <tr>
+              <td><%= announcement.announcement_text %></td>
+              <td><%= announcement.post_date %></td>
+              <td>
+                <form action="/announcements/admin/delete/<%= announcement.id %>" method="POST">
+                  <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

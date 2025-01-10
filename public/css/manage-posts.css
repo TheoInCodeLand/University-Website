@@ -1,0 +1,166 @@
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url("/img/luxury.mp4");
+    color: #333;
+  }
+  
+  /* Navbar Styling */
+  .navbar {
+    background-color: #333;
+    padding: 1rem;
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .navbar-menu {
+    list-style: none;
+    display: flex;
+  }
+  
+  .navbar-menu li {
+    margin-left: 1.5rem;
+  }
+  
+  .navbar-link {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .body-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-height: 40vh;
+    min-height: 40vh;
+    gap: 0.3em;
+  }
+
+  main, section {
+    width: 49.5%;
+    display: flex;
+    max-height: 82vh;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 0.3em;
+    overflow-x: auto;
+    background: white;
+  }
+  
+  /* Form Section Styling */
+  .post-form, .search-form {
+    background-color: #fff;
+    padding: 1.5rem;
+    margin: 2rem auto;
+    width: 90%;
+    overflow-y: auto;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  input[type="text"],
+  input[type="date"],
+  textarea,
+  select,
+  input[type="file"] {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Card Styling */
+  .main-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .card-container {
+    width: 100%;
+    max-width: 280px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .card-container:hover {
+    background-color: #001eff18;
+    transform: scale(0.97);
+  }
+  
+  .card img, .card video {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    color: #007bff;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-text {
+    margin-bottom: 1rem;
+  }
+  
+  /* Search Section Styling */
+  .search-section {
+    text-align: center;
+    padding: 0%;
+    margin: 0%;
+  }
+  
+  .search-form {
+    display: inline-flex;
+    gap: 1rem;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+  }
+  

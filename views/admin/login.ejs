@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar With Dropdown | Ludiflex</title>
+    <!-- FONTAWESOME ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/Home-Page/Header.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="#about">About</a></li>
+            
+        </ul>
+        
+      </nav>
+
+    <main>
+        <form action="/auth/login" method="POST">
+          <div class="logo-ump"></div>
+          <h2>Sign_in</h2>
+
+          <div class="input-div">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" name="username" id="username" placeholder="Username" required autocomplete="username">
+          </div>
+
+          <div class="input-div">
+            <i class="fa-solid fa-key"></i>
+            <input type="password" name="password" id="password" placeholder="Password" autocomplete="password">
+          </div>
+          
+          <p>
+            Forgot password? 
+            <a href=""> Click here!</a>
+          </p>
+          
+          <div class="btns">
+            <button type="submit">Login</button>
+            <!-- <button>Cancel</button> -->
+          </div>
+      </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* ===== Reset some default styles ===== */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ===== VARIABLES ===== */
+:root{
+    --bg-color: #fff;
+    --primary-color: #000000;
+    --second-color: #196FE0;
+    --hover-bg-color: #efefef;
+    --shadow-1: 0px 2px 10px rgba(0, 0, 0, 0.3);
+    --shadow-2: 0px 2px 10px rgba(26, 112, 224, 0.4);
+}
+/* ===== BODY ===== */
+body{
+    background: url("../img/bg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    /* gap: 6em; */
+}
+
+/* ===== Reusable CSS ===== */
+a{
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+ul{
+    list-style-type: none;
+}
+
+/* ===== Menu Toggle ===== */
+.menu-toggle{
+    display: none;
+    font-size: 24px;
+    background: transparent;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+/* ===== Navigation Bar ===== */
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 3vw;
+    height: 70px;
+    background: var(--bg-color);
+    color: var(--primary-color);
+    background: fixed;
+    top: 0;
+    background: #3f9cff49;
+}
+.logo h1{
+    font-weight: 600;
+}
+.nav-main-menu{
+    display: flex;
+}
+.nav-link{
+    padding: 26px 10px;
+    margin-inline: 10px;
+    transition: .3s;
+}
+.nav-link:hover{
+    color: var(--second-color);
+}
+.nav span{
+    margin-right: 5px;
+}
+.fa-chevron-down, .fa-chevron-right{
+    font-size: 12px;
+    transition: .3s;
+}
+
+
+@keyframes slideUp {
+    from{
+        margin-top: 20px;
+    }
+    to{
+        margin-top: 0;
+    }
+}
+
+.btn{
+    font-size: 15px;
+    background-color: var(--second-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 10px 24px;
+    border-radius: 30px;
+    box-shadow: var(--shadow-2);
+    cursor: pointer;
+    transition: .3s;
+}
+.btn:hover{
+    opacity: 0.9;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100vw;
+    height: 91vh;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background: url('https://images.adsttc.com/media/images/5c62/01ab/284d/d1be/0300/0126/large_jpg/UMP_GAPP_01_Tristan_McLaren_-_Approach_to_Hall.jpg?1549926800');
+
+}
+.right, .left {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    height: 100%;
+}
+
+.left {
+    background: rgb(255, 255, 255);
+}
+
+.right {
+    background: #00000089;
+}
+
+.left form{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5em;
+}
+
+.form-group {
+    background: whitesmoke;
+    padding: 1em;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    border-radius: 1px;
+}
+
+.container textarea {
+    background: transparent;
+    border: none;
+    height: 25vh;
+    /* width: 80%; */
+}
+
+.container form textarea:focus{
+    outline: none;
+    background: transparent;
+    border: none;
+}
+
+.logo-ump {
+    width: 8em;
+    height: 8em;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('https://vacancieswithcollen.co.za/wp-content/uploads/2024/07/Mpumalanga-University.png');
+}
+
+.container .left form button {
+    width: 90%;
+    border-radius: 0%;
+}
+
+.container .right form button {
+    background: transparent;
+    border: none;
+    color: red;
+    box-shadow: none;
+    font-size: larger;
+}
+
+.table {
+    width: 80%;
+    background: #0000007c;
+    padding: 2em;
+    /* border-radius: 8px; */
+}
+
+.table thead {
+    /* background-color: #007bff; Blue background */
+    color: white; /* White text */
+}
+
+.table th, .table td {
+    padding: 5px; /* Padding for cells */
+    text-align: left; /* Left-align text */
+}
+/* Table row styles */
+.table tbody tr {
+    /* background-color: #e9f1ff97; White background for rows */
+    transition: background-color 0.3s; /* Smooth transition */
+    color: whitesmoke;
+    font-size: small;
+}
+.table tbody tr:hover {
+    background-color: white; /* Light blue on hover */
+    color: #000000;
+}
+
+/* Button styles */
+.btn:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+/* Font styles */
+h1, h2, h3, h4, h5, h6 {
+    color: #007bff; /* Blue color for headings */
+}

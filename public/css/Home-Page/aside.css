@@ -1,0 +1,109 @@
+.announcements {
+    overflow-y: auto;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000000d0;
+    color: white;
+    
+}
+
+.announcement-content {
+    display: flex;
+    flex-direction: row;
+    max-width: 95%;
+    overflow-x: auto;
+}
+
+.announcement-content::after {
+    height: 50px;
+    pointer-events: none;
+}
+
+.announcement-card {
+    background-color: #00000024;
+    padding: 10px;
+    min-width: 250px;
+    margin-bottom: 15px;
+    margin-left: 4px;
+    transition: transform 0.4s ease-in-out;
+
+}
+
+.announcement-card h3 {
+    margin-top: 0;
+}
+
+.announcement-card p {
+    margin-bottom: 5px;
+    font-size: small;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.041);
+    background: #ffffff07;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.announcements::-webkit-scrollbar {
+    display: none;
+}
+
+.announcement-card:hover {
+    transform: scale(0.96);
+    background: rgba(0, 0, 0, 0);
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 85vh;
+    background-image: url('/public/UMP_GAPP_08_Timber_Promenade_Dec.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    background-color: #33333391;
+    width: 30vw;
+    padding: 1em;
+}
+
+.hero p {
+    font-size: 1.1em;
+    max-width: 600px;
+    margin-bottom: 25px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.learn-more,
+.sign-up {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: 1px solid #fff;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+
+.learn-more:hover,
+.sign-up:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+.announcement-content::-webkit-scrollbar {
+    display: none;
+}

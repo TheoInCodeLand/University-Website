@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link 
+      rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" 
+      crossorigin="anonymous" 
+      referrerpolicy="no-referrer" 
+    />
+    
+    <link 
+      rel="stylesheet" 
+      href="/css/Home-Page/Global.css"
+    >
+    <title>UMP | University Of Mpumalanga</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav__bar">
+        <div class="nav__header">
+          <div class="logo nav__logo">
+            <div>UMP</div>
+            <!-- <span>University Of<br />Mpumalanga</span> -->
+          </div>
+          <div class="nav__menu__btn" id="menu-btn">
+            <i class="ri-menu-line"></i>
+          </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="/booking/booking-form">Photographer</a></li>
+          <li><a href="#feature">Feature</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="/admin/dashboard" style="color: #ff7b00;">Admin</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <header class="header" id="home">
+      <div class="section__container header__container">
+        <p class="section__subheader">ABOUT US</p>
+        <h1>Creating<br />opportunities</h1>
+        <!-- <button class="btn">Take A Tour</button> -->
+      </div>
+    </header>
+
+    <!-- <section class="booking">
+      <div class="section__container booking__container">
+        <form action="/">
+          <div class="input__group">
+            <label for="arrival">Arrival Date</label>
+            <input type="text" placeholder="Your Arrival Date" />
+          </div>
+          <div class="input__group">
+            <label for="departure">Departure Date</label>
+            <input type="text" placeholder="Your Departure Date" />
+          </div>
+          <div class="input__group">
+            <label for="guests">Guests</label>
+            <input type="text" placeholder="No Of Guests" />
+          </div>
+          <button class="btn">Check Availability</button>
+        </form>
+      </div>
+    </section> -->
+
+    <section class="about" id="about" >
+      <div class="section__container about__container">
+        <div class="about__grid">
+          <div class="about__image">
+            <img 
+              src="https://www.dpreview.com/files/p/articles/3675708289/sony_a7cr.jpeg" 
+              alt="about" 
+            />
+          </div>
+          <div class="about__card">
+            <i class="fa-solid fa-camera"></i>
+            <h4>UMP Photographer</h4>
+            <p>
+              Unlocking Photography Excellence And Ensuring Your Picture Perfect Photos
+            </p>
+          </div>
+          <div class="about__image">
+            <img 
+              src="https://i0.wp.com/brionymolly.com/wp-content/uploads/2023/04/pexels-photo-212372.jpeg?resize=1880%2C1253&ssl=1" 
+              alt="about"
+            />
+          </div>
+          <div class="about__card">
+            <span>
+              <i class="fa-solid fa-camera"></i>
+            </span>
+            <!-- <h4>Luxury Room</h4>
+            <p>Experience Unrivaled Luxury at Our Exquisite Luxury Rooms</p> -->
+          </div>
+        </div>
+        <div class="about__content">
+          <p class="section__subheader">Photographer Services</p>
+          <h2 class="section__header">Every Moment</h2>
+          <p class="section__description">
+            Welcome to our University Photographer Booking platform, where we help you preserve your most cherished memories. 
+            Whether it's capturing your academic milestones, campus events, or personal achievements, 
+            our professional photographers are here to provide top-notch services.
+            Easily book a session with our university photographer to ensure your special moments are immortalized with creativity and precision. 
+            Let us help you turn your memories into timeless treasures.
+          </p>
+          <a href="/booking/booking-form">
+            <button class="btn">Book Now</button>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1200px-PDF_file_icon.svg.png -->
+    <section class="room__container" id="All_Posts">
+      <p class="section__subheader">All Posts</p>
+      <h2 class="section__header">University Gallery</h2>
+      <div class="room__grid">
+        <% posts.forEach(post => { %>
+          <div class="room__card">
+            <% if (post.media_url.endsWith('.mp4')) { %>
+              <video controls autoplay loop class="post-image">
+                <source 
+                  src="/<%= post.media_url %>" 
+                  type="video/mp4" 
+                  class="post-image"
+                >
+                Your browser does not support the video tag.
+              </video>
+            <% } else { %>
+              <img src="/<%= post.media_url %>" alt="Post image">
+            <% } %>
+            <div class="room__card__details">
+              <div>
+                <h4><%= post.title %></h4>
+                <p><%= post.description %> <br><span style="color: #f6ac0f; font-size: x-small;"><%= post.location %></span></p>
+              </div>
+              <h3>
+                <span>
+                  <%= new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
+                </span>
+              </h3>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+    <section class="room__container" id="accademics_posts">
+      <p class="section__subheader">ACCADEMICS</p>
+      <div class="room__grid">
+        <% posts.forEach(post => { %>
+          <% if (post.category === 'academics') { %> <!-- Check if the post is in the 'academics' category -->
+            <div class="room__card">
+              <% if (post.media_url.endsWith('.mp4')) { %>
+                <video controls autoplay loop class="post-image">
+                  <source src="/<%= post.media_url %>" type="video/mp4" class="post-image">
+                  Your browser does not support the video tag.
+                </video>
+              <% } else { %>
+                <img src="/<%= post.media_url %>" alt="Post image">
+              <% } %>
+              <div class="room__card__details">
+                <div>
+                  <h4><%= post.title %></h4>
+                  <p><%= post.description %> <br><span style="color: #f6ac0f; font-size: x-small;"><%= post.location %></span></p>
+                </div>
+                <h3>
+                  <span>
+                    <%= new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
+                  </span>
+                </h3>
+              </div>
+            </div>
+          <% } %> <!-- Close the category check -->
+        <% }) %>
+      </div>
+      
+    </section>
+    <section class="room__container" id="accademics_posts">
+      <p class="section__subheader">SPORTS Category</p>
+      <div class="room__grid">
+        <% posts.forEach(post => { %>
+          <% if (post.category === 'sports') { %> <!-- Check if the post is in the 'academics' category -->
+            <div class="room__card">
+              <% if (post.media_url.endsWith('.mp4')) { %>
+                <video controls autoplay loop class="post-image">
+                  <source src="/<%= post.media_url %>" type="video/mp4" class="post-image">
+                  Your browser does not support the video tag.
+                </video>
+              <% } else { %>
+                <img src="/<%= post.media_url %>" alt="Post image">
+              <% } %>
+              <div class="room__card__details">
+                <div>
+                  <h4><%= post.title %></h4>
+                  <h3>
+                    <span>
+                      <%= new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
+                    </span>
+                  </h3>
+                  <p><%= post.description %> <br><span style="color: #f6ac0f; font-size: x-small;"><%= post.location %></span></p>
+                </div>
+                
+              </div>
+            </div>
+          <% } %> <!-- Close the category check -->
+        <% }) %>
+      </div>
+      
+    </section>
+
+    <section class="intro">
+      <div class="section__container intro__container">
+        <div class="intro__cotent">
+          <p class="section__subheader">INTRO VIDEO</p>
+          <h2 class="section__header">Begin planning your career with us!</h2>
+          <p class="section__description">
+            University of Mpumalanga (UMP) registered students have the opportunity 
+            to apply for various bursaries to enable them to study at the University.
+          </p>
+          <a href="https://ienabler.ump.ac.za/pls/prodi41/gen.gw1pkg.gw1view">
+            <button class="btn">Apply Now</button>
+          </a>
+        </div>
+        <div class="intro__video">
+          <video src="/img/luxury.mp4" autoplay muted loop></video>
+        </div>
+      </div>
+    </section>
+
+    <section class="section__container feature__container" id="feature">
+      <p class="section__subheader">FACILITIES</p>
+      <h2 class="section__header">UMP Values</h2>
+      <div class="feature__grid">
+        <div class="feature__card">
+          <span><i class="ri-thumb-up-line"></i></span>
+          <h4>Excellence</h4>
+          <p>
+            The University commits itself to uphold the highest standards of 
+            excellence in all its actions, functions and services.
+          </p>
+        </div>
+        <div class="feature__card">
+          <span><i class="fa-solid fa-certificate"></i></span>
+          <h4>Integrity</h4>
+          <p>
+            At all times and in all situations the actions and interactions of the University 
+            will be characterised by undeviating honesty, by utmost fairness, caring for one 
+            another as fellow human beings, and treating one another with the utmost respect.
+          </p>
+        </div>
+        <div class="feature__card">
+          <span><i class="fa-solid fa-users-rays"></i></span>
+          <h4>Diversity</h4>
+          <p>
+            Diversity is valued and celebrated in unlocking a range of interactions, 
+            and enhancing exposure to a wide variety of diverse cultures, backgrounds, 
+            views and opinions.
+          </p>
+        </div>
+        <div class="feature__card">
+          <span><i class="fa-solid fa-handshake-angle"></i></span>
+          <h4>Collaboration</h4>
+          <p>
+            As an engaged institution UMP will actively seek out opportunities for 
+            collaboration with all its stakeholders in maximising the development of 
+            human potential and socio-economic development.
+          </p>
+        </div>
+        <div class="feature__card">
+          <span><i class="fa-solid fa-screwdriver-wrench"></i></span>
+          <h4>Adaptability</h4>
+          <p>
+            UMP acknowledges our ever changing knowledge contexts, institutional environments, 
+            and social situations and therefore the need to promote and foster adaptability.
+          </p>
+        </div>
+        <div class="feature__card">
+          <span><i class="fa-regular fa-lightbulb"></i></span>
+          <h4>Inspiration</h4>
+          <p>
+            UMP values inspiration that allows and encourages others to be more and do more 
+            than what at first seems possible.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu" id="menu">
+      <div class="section__container menu__container">
+        <div class="menu__header">
+          <div>
+            <p class="section__subheader">Docs </p>
+            <h2 class="section__header">University Documents</h2>
+          </div>
+          <div class="section__nav">
+            <span><i class="ri-arrow-left-line"></i></span>
+            <span><i class="ri-arrow-right-line"></i></span>
+          </div>
+        </div>
+        <ul class="menu__items">
+          <% if (documents.length > 0) { %>
+            
+            <% documents.forEach(doc => { %>
+              <a href="/uploads/documents/<%= doc.file_name %>" target="_blank">
+                <li>
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1200px-PDF_file_icon.svg.png" alt="menu" />
+                  <div class="menu__details">
+                    <h4><%= doc.doc_title %></h4>
+                    <p>
+                      <%= doc.doc_description %>
+                    </p>
+                  </div>
+                  <!-- //////////////////////// -->
+                  
+                </li>
+              </a>
+            <% }) %>
+          <% } 
+          else { %>
+            <li>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1200px-PDF_file_icon.svg.png" alt="menu" />
+              <div class="menu__details">
+                <h4>Fggs & Bacon</h4>
+                <p>
+                  It is a culinary innovation that puts a unique spin on the
+                  beloved breakfast combination.
+                </p>
+              </div>
+            </li>
+            <li>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1200px-PDF_file_icon.svg.png" alt="menu" />
+              <div class="menu__details">
+                <h4>Tea or Coffee</h4>
+                <p>
+                  A classic choice for your daily dose of comfort and calmness.
+                </p>
+              </div>
+            </li><li>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1200px-PDF_file_icon.svg.png" alt="menu" />
+              <div class="menu__details">
+                <h4>Fggs & Bacon</h4>
+                <p>
+                  It is a culinary innovation that puts a unique spin on the
+                  beloved breakfast combination.
+                </p>
+              </div>
+            </li>
+            <li>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1200px-PDF_file_icon.svg.png" alt="menu" />
+              <div class="menu__details">
+                <h4>Tea or Coffee</h4>
+                <p>
+                  A classic choice for your daily dose of comfort and calmness.
+                </p>
+              </div>
+            </li>
+          <% } %>
+          
+        </ul>
+        
+        <ul class="menu__banner">
+          <li>
+            <span><i class="ri-file-text-line"></i></span>
+            <h4>40 +</h4>
+            <p>Qualifications</p>
+          </li>
+          <li>
+            <span><i class="ri-user-line"></i></span>
+            <h4>9k +</h4>
+            <p>Registered Students</p>
+          </li>
+          <li>
+            <span><i class="ri-function-line"></i></span>
+            <h4>3 +</h4>
+            <p>Fuculties</p>
+          </li>
+          <li>
+            <span><i class="ri-lightbulb-flash-line"></i></span>
+            <h4>100M</h4>
+            <p>Ideas Raised Funds</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section__container news__container" id="news">
+      <div class="news__header">
+        <div>
+          <p class="section__subheader">BLOG</p>
+          <h2 class="section__header">News Feeds</h2>
+        </div>
+        <div class="section__nav">
+          <span id="prevPage" class="pagination-button"><i class="ri-arrow-left-line"></i></span>
+          <span id="nextPage" class="pagination-button"><i class="ri-arrow-right-line"></i></span>
+        </div>
+      </div>
+      <div class="news__grid" id="newsGrid">
+      <!-- ////////////////////////////////////////////// -->
+
+        <% if (typeof events !== 'undefined' && events.length > 0) { %>
+            <% events.forEach(event => { %>
+              <div class="news__card">
+                <img src="https://westville.net.za/wp-content/uploads/2021/08/Events.jpg" alt="news" />
+                <div class="news__card__title">
+                  <p><%= new Date(event.event_date).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }) %></p>
+                  <p><%= event.event_time %></p>
+                </div>
+                <h4><%= event.title %></h4>
+                <p>
+                  
+                </p>
+                <p style="color: #f6ac0f;">
+                  <%= event.location %>
+                </p>
+              </div>
+            <% }) %>
+        <% } else { %>
+            
+          <div class="news__card">
+            <img src="/img/no-image.png" class="new-img-place-holder" alt="news" />
+            <div class="news__card__title">
+              <p>1 Jan 2000</p>
+              <p>00:00</p>
+            </div>
+            <h4>Feed Title</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <p style="color: #f6ac0f;">
+              Location
+            </p>
+          </div>
+
+          <div class="news__card">
+            <img src="/img/no-image.png" class="holder" alt="news" />
+            <div class="news__card__title">
+              <p>1 Jan 2000</p>
+              <p>00:00</p>
+            </div>
+            <h4>Feed Title</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <p style="color: #f6ac0f;">
+              Location
+            </p>
+          </div>
+
+          <div class="news__card">
+            <img src="/img/no-image.png" class="new-img-place-holder" alt="news"  />
+            <div class="news__card__title">
+              <p>1 Jan 2000</p>
+              <p>00:00</p>
+            </div>
+            <h4>Feed Title</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <p style="color: #f6ac0f;">
+              Location
+            </p>
+          </div>
+        <% } %>
+
+      </div>
+    </section>
+    
+    
+
+    <section class="about" id="about" style="background: url('https://cache.marriott.com/content/dam/marriott-digital/pr/emea/hws/j/jnbwa/en_us/photo/unlimited/assets/jnbwa-exterior-6011.jpg');">
+      <div class="section__container about__container">
+        <div class="about__grid">
+          <div class="about__image">
+            <img 
+              src="https://tfokomala-hotel-conference-centre-mbombela.booked.net/data/Photos/OriginalPhoto/11062/1106280/1106280747/Tfokomala-Hotel-Conference-Centre-Mbombela-Exterior.JPEG" 
+              alt="about" 
+            />
+          </div>
+          <div class="about__card">
+            <i class="fa-solid fa-camera" style="color: white;"></i>
+            <h4 style="color: white;">Hotel and Conference</h4>
+            <p style="color: white;">
+              Tfokomala Hotel and Conference Centre features 25 tastefully designed luxury rooms, Egumeni Restaurant
+            </p>
+          </div>
+          <div class="about__image">
+            <img 
+              src="https://tfokomala.co.za/wp-content/uploads/2022/05/UMP-Hotel-High-Resolution-Room-12-scaled.jpg"
+              alt="about"
+            />
+          </div>
+          <div class="about__card" style="background: white;">
+            <span style="color: black;">
+              <i class="fa-solid fa-hotel"></i>
+            </span>
+            <!-- <h4>Luxury Room</h4>
+            <p>Experience Unrivaled Luxury at Our Exquisite Luxury Rooms</p> -->
+          </div>
+        </div>
+        <div class="about__content">
+          <p class="section__subheader" style="color: white;">Hotel and Conference</p>
+          <h2 class="section__header" style="color: white;">Tfokomala</h2>
+          <p class="section__description" style="color: white;">
+            Tfokomala Hotel and Conference Centre is more than a hospitality establishment; it serves as a teaching hotel, offering students practical, hands-on experience across key operational areas, including the restaurant, kitchen, and various hotel departments.
+          </p>
+          <a href="https://tfokomala.co.za/">
+            <button class="btn">
+              Visit Tfokomala
+            </button>
+          </a>
+          
+        </div>
+      </div>
+    </section>
+
+    <section class="section__container news__container" id="Local_Attractions">
+      <div class="news__header">
+        <div>
+          <h2 class="section__header">Local Attractions</h2>
+        </div>
+        <div class="section__nav">
+          <span><i class="ri-arrow-left-line"></i></span>
+          <span><i class="ri-arrow-right-line"></i></span>
+        </div>
+      </div>
+      <div class="news__grid">
+        <div class="news__card">
+          <img src="/img/no-image.png" alt="news" />
+          <div class="news__card__title">
+            <p>25th March 2022</p>
+            <p>By Emily</p>
+          </div>
+          <h4>Exploring Local Culinary Gems: A Foodie's Guide.</h4>
+          <p>
+            Join Emily as she takes you on a gastronomic adventure through the
+            neighborhood surrounding our hotel.
+          </p>
+        </div>
+        <div class="news__card">
+          <img src="/img/no-image.png" alt="news" />
+          <div class="news__card__title">
+            <p>15th June 2022</p>
+            <p>By David</p>
+          </div>
+          <h4>Balancing Mind, Body, and Soul at Our Hotel.</h4>
+          <p>
+            Discover holistic spa treatments, fitness facilities, and
+            mindfulness practices that will leave you feeling refreshed.
+          </p>
+        </div>
+        <div class="news__card">
+          <img src="/img/no-image.png" alt="news" />
+          <div class="news__card__title">
+            <p>08th August 2022</p>
+            <p>By Sarah</p>
+          </div>
+          <h4>Exploring Outdoor Activities Near Our Hotel.</h4>
+          <p>
+            From hiking and biking trails to water sports and wildlife
+            encounters, she highlights ways to experience nature's wonders.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="section__container footer__container">
+        <div class="footer__col">
+          <div class="logo footer__logo">
+            
+          </div>
+          <p class="section__description">
+            Our pioneering journey began in August 2013 with the 
+            promulgation of the Government Gazette making the establishment of 
+            the University public on 22 August 2013. 
+            The University was launched on 31 October 2013.
+          </p>
+          <ul class="footer__socials">
+            <li>
+              <a href="#"><i class="ri-youtube-fill"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="ri-instagram-line"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="ri-facebook-fill"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="ri-linkedin-fill"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Services</h4>
+          <div class="footer__links">
+            <li><a href="/booking/booking-form">Photographer Booking</a></li>
+            <li><a href="#">Announcements</a></li>
+            <li><a href="#">Apply To Learn</a></li>
+            <li><a href="#">Special Offers</a></li>
+            <li><a href="#">Concierge Services</a></li>
+            <li><a href="#">Customer Support</a></li>
+          </div>
+        </div>
+        <div class="footer__col" id="footer">
+          <h4>General Enquiries</h4>
+          <div class="footer__links">
+            <li>
+              <span><i class="ri-phone-fill"></i></span>
+              <div>
+                <h5>Phone Number</h5>
+                <p><a href="#footer">013 002 0001</a></p>
+              </div>
+            </li>
+            <li>
+              <span><i class="ri-record-mail-line"></i></span>
+              <div>
+                <h5>Email</h5>
+                <p><a href="#footer">info@ump.ac.za</a></p>
+              </div>
+            </li>
+            <li>
+              <span><i class="ri-map-pin-2-fill"></i></span>
+              <div>
+                <h5>Mbombela Campus</h5>
+                <p><a href="https://maps.app.goo.gl/Kk8hsEJY6yttPyfK9">Cnr R40 and D725 Roads, Mbombela 1200</a></p>
+              </div>
+            </li>
+            <li>
+              <span><i class="ri-map-pin-2-fill"></i></span>
+              <div>
+                <h5>Siyabuswa Campus</h5>
+                <p><a href="https://maps.app.goo.gl/kUz8e2itPp8LFobN6">Bheki Mfundo Drive, Siyabuswa, South Africa</a></p>
+              </div>
+            </li>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bar">
+        Copyright © 2024 University Of Mpumalanga. All rights reserved.
+      </div>
+    </footer>
+    <form action="/submit" method="POST" enctype="multipart/form-data">
+      <label for="event-date">Event Date:</label>
+      <input type="date" id="event-date" name="event_date" required>
+  
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" placeholder="Enter location" required>
+  
+      <label for="title">Event Title:</label>
+      <input type="text" id="title" name="title" placeholder="Enter event title" required>
+  
+      <label for="description">Event Description:</label>
+      <textarea id="description" name="description" rows="5" placeholder="Enter event description" required></textarea>
+  
+      <label for="image">Upload an Image:</label>
+      <input type="file" id="image" name="image" accept="image/*" required>
+  
+      <input type="submit" value="Submit">
+    </form>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="main.js"></script>
+    <script src="/js/Home.js"></script>
+    <script>
+      // Function to format the date
+      function formatDate(dateString) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString('en-US', options);
+      }
+  
+      // Assuming post.date is in a format that can be parsed by the Date constructor
+      const formattedDate = formatDate(post.date);
+    </script>
+  </body>
+</html>

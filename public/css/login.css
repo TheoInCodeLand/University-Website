@@ -1,0 +1,351 @@
+/* POPPINS FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* ===== Reset some default styles ===== */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ===== VARIABLES ===== */
+:root{
+    --bg-color: #fff;
+    --primary-color: #000000;
+    --second-color: #196FE0;
+    --hover-bg-color: #efefef;
+    --shadow-1: 0px 2px 10px rgba(0, 0, 0, 0.3);
+    --shadow-2: 0px 2px 10px rgba(26, 112, 224, 0.4);
+}
+/* ===== BODY ===== */
+body{
+    background-color: var(--bg-color);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    /* gap: 6em; */
+}
+
+/* ===== Reusable CSS ===== */
+a{
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+ul{
+    list-style-type: none;
+}
+
+/* ===== Menu Toggle ===== */
+.menu-toggle{
+    display: none;
+    font-size: 24px;
+    background: transparent;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+/* ===== Navigation Bar ===== */
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 3vw;
+    height: 70px;
+    background: var(--bg-color);
+    color: var(--primary-color);
+    background: fixed;
+    top: 0;
+    background: #3f9cff49;
+}
+.logo h1{
+    font-weight: 600;
+}
+.nav-main-menu{
+    display: flex;
+}
+.nav-link{
+    padding: 26px 10px;
+    margin-inline: 10px;
+    transition: .3s;
+}
+.nav-link:hover{
+    color: var(--second-color);
+}
+.nav span{
+    margin-right: 5px;
+}
+.fa-chevron-down, .fa-chevron-right{
+    font-size: 12px;
+    transition: .3s;
+}
+
+.dropdown:hover .fa-chevron-down, .sub-dropdown:hover .fa-chevron-right{
+    transform: rotate(180deg);
+}
+.dropdown:hover .nav-link{
+    color: var(--second-color);
+}
+
+/* ===== Dropdown ===== */
+.dropdown{
+    position: relative;
+}
+.nav-main-menu .dropdown-content{
+    display: none;
+    position: absolute;
+    top: 46px;
+    left: 0;
+    background: var(--bg-color);
+    min-width: 240px;
+    border-top: 3px solid #ccc;
+    border-radius: 0 0 3px 3px;
+    animation: slideUp .3s;
+}
+.dropdown-content li{
+    padding: 20px;
+}
+.dropdown-content li:hover{
+    background: var(--hover-bg-color);
+}
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+/* ===== Sub - Dropdown ===== */
+.nav-main-menu .sub-dropdown-content{
+   display: none;
+   position: absolute;
+   top: 34%;
+   left: 100%;
+   background: var(--bg-color);
+   min-width: 240px;
+   border-top: 3px solid #ccc;
+   border-radius: 3px;
+   animation: slideUp .3s;
+   box-shadow: var(--shadow-1);
+}
+@keyframes slideUp {
+    from{
+        margin-top: 20px;
+    }
+    to{
+        margin-top: 0;
+    }
+}
+.dropdown-link{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.sub-dropdown:hover .sub-dropdown-content{
+    display: block;
+}
+.btn{
+    font-size: 15px;
+    background-color: var(--second-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 10px 24px;
+    border-radius: 30px;
+    box-shadow: var(--shadow-2);
+    cursor: pointer;
+    transition: .3s;
+}
+.btn:hover{
+    opacity: 0.9;
+}
+
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    color: var(--bg-color);
+    padding: 20px;
+}
+main p{
+    font-size: 50px;
+    font-weight: 600;
+    text-align: center;
+
+}
+
+main form {
+    color: #3a3a3a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3em;
+    gap: 1.5em;
+    margin-top: 4em;
+    box-shadow:  14px 14px 28px #c0c0c0,
+             -14px -14px 28px #ffffff;
+}
+
+.separate {
+    width: 320px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+main form h2 {
+    font-size: small;
+    display: none;
+}
+
+main form .input-div {
+    background: whitesmoke;
+    padding: 0.8em;
+    width: 360px;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    border-radius: 1px;
+}
+
+main form input {
+    background: transparent;
+    border: none;
+    width: 80%;
+
+}
+
+main form input:focus{
+    outline: none;
+    background: transparent;
+    border: none;
+}
+
+main form .btns {
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+main form .btns button {
+    width: 100%;
+    text-align: center;
+    height: 3.5em;
+    background: #196FE0;
+    color: white;
+    border-radius: 25px;
+    border: none;
+
+}
+.separate {
+    width: 360px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+.separate div {
+    width: 45%;
+
+}
+main form .btns button:hover {
+    cursor: pointer;
+    background: rgb(237, 237, 237);
+    color: #3a3a3a;
+}
+
+main form p {
+    font-size: small;
+    text-align: left;
+}
+
+.logo-ump {
+    width: 8em;
+    height: 8em;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('https://vacancieswithcollen.co.za/wp-content/uploads/2024/07/Mpumalanga-University.png');
+}
+
+/* ===== Responsive styles ===== */
+
+@media only screen and (max-width: 794px){
+    .nav-main-menu{
+        display: none;
+    }
+    .menu-toggle{
+        display: block;
+    }
+}
+
+.accept-decline {
+    display: flex;
+    gap: 1em;
+}
+
+.btn-success {
+    background: green;
+}
+
+.btn-danger {
+    background: red;
+}
+
+/* Table styles */
+.table {
+    width: 100%; /* Full width */
+    border-collapse: collapse; /* Merge borders */
+    margin: 20px 0; /* Space above and below the table */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    overflow: hidden; /* To apply border radius */
+}
+
+/* Table header styles */
+.table thead {
+    background-color: #363636; /* Blue background */
+    color: white; /* White text */
+}
+
+.table th, .table td {
+    padding: 15px; /* Padding for cells */
+    text-align: left; /* Left-align text */
+    border-bottom: 1px solid #ddd; /* Light border below cells */
+}
+
+/* Table row styles */
+.table tbody tr {
+    background-color: white; /* White background for rows */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1; /* Light gray on hover */
+}
+
+/* Accept/Decline button container */
+.accept-decline {
+    display: flex; /* Flexbox for horizontal layout */
+    gap: 10px; /* Space between buttons */
+}
+
+/* Status label styles */
+.table tbody td span {
+    font-weight: bold; /* Bold text for status */
+    color: #6c757d; /* Gray color for non-pending statuses */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .table {
+        font-size: 14px; /* Smaller font size on mobile */
+    }
+
+    .table th, .table td {
+        padding: 10px; /* Reduced padding on mobile */
+    }
+}

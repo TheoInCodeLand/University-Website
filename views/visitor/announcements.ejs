@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+
+<h1>University Announcements</h1>
+
+<div class="announcements-list">
+  <% announcements.forEach(announcement => { %>
+    <div class="announcement">
+      <p><strong><%= announcement.announcement_text %></strong></p>
+      <p><small>Posted on: <%= announcement.post_date %></small></p>
+    </div>
+  <% }) %>
+</div>
+
+<%- include('../partials/footer') %>
