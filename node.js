@@ -1,4 +1,4 @@
-npm run dnpconst bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 const db = require('./config/db');
 
 const username = 'admin';  // Replace with your desired username
