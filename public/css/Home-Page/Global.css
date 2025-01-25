@@ -170,11 +170,9 @@ nav {
 
 .header {
   padding-block: 5rem;
-  background-image: linear-gradient(
-      rgba(0, 0, 0, 0.686),
-      rgba(15, 26, 44, 0)
-    ),
-    url("https://www.ump.ac.za//CMSPages/GetFile.aspx?guid=699c2cba-a064-4138-b0ec-360dc9124e59");
+  background-image: 
+    url("https://images.adsttc.com/media/images/5c62/02a8/284d/d1be/0300/012d/large_jpg/UMP_GAPP_08_Timber_Promenade_Dec.jpg?1549927060");
+  height: 95vh;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
