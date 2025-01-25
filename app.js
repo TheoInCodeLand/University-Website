@@ -7,7 +7,6 @@ const session = require('express-session');
 const multer = require('multer'); // Import multer
 const app = express();
 
-// Set up views and static files
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views')); // Set the views directory
 app.use(express.static(path.join(__dirname, 'public')));
@@ -73,10 +72,10 @@ app.post('/send-email', (req, res) => {
 
   // Create a transporter
   const transporter = nodemailer.createTransport({
-      service: 'gmail', // Use your email service
+      service: 'gmail',
       auth: {
-          user: 'your-email@gmail.com', // Your email
-          pass: 'your-email-password' // Your email password or app password
+          user: 'your-email@gmail.com',
+          pass: 'your-email-password'
       }
   });
 
