@@ -118,122 +118,6 @@
       </div>
     </section>
     <!-- https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1200px-PDF_file_icon.svg.png -->
-    <section class="room__container" id="All_Posts">
-      <p class="section__subheader">All Posts</p>
-      <h2 class="section__header">University Gallery</h2>
-      <div class="room__grid">
-        <% posts.forEach(post => { %>
-          <div class="room__card">
-            <% if (post.media_url.endsWith('.mp4')) { %>
-              <video controls autoplay loop class="post-image">
-                <source 
-                  src="/<%= post.media_url %>" 
-                  type="video/mp4" 
-                  class="post-image"
-                >
-                Your browser does not support the video tag.
-              </video>
-            <% } else { %>
-              <img src="/<%= post.media_url %>" alt="Post image">
-            <% } %>
-            <div class="room__card__details">
-              <div>
-                <h4><%= post.title %></h4>
-                <p><%= post.description %> <br><span style="color: #f6ac0f; font-size: x-small;"><%= post.location %></span></p>
-              </div>
-              <h3>
-                <span>
-                  <%= new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
-                </span>
-              </h3>
-            </div>
-          </div>
-        <% }) %>
-      </div>
-    </section>
-    <section class="room__container" id="accademics_posts">
-      <p class="section__subheader">ACCADEMICS</p>
-      <div class="room__grid">
-        <% posts.forEach(post => { %>
-          <% if (post.category === 'academics') { %> <!-- Check if the post is in the 'academics' category -->
-            <div class="room__card">
-              <% if (post.media_url.endsWith('.mp4')) { %>
-                <video controls autoplay loop class="post-image">
-                  <source src="/<%= post.media_url %>" type="video/mp4" class="post-image">
-                  Your browser does not support the video tag.
-                </video>
-              <% } else { %>
-                <img src="/<%= post.media_url %>" alt="Post image">
-              <% } %>
-              <div class="room__card__details">
-                <div>
-                  <h4><%= post.title %></h4>
-                  <p><%= post.description %> <br><span style="color: #f6ac0f; font-size: x-small;"><%= post.location %></span></p>
-                </div>
-                <h3>
-                  <span>
-                    <%= new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
-                  </span>
-                </h3>
-              </div>
-            </div>
-          <% } %> <!-- Close the category check -->
-        <% }) %>
-      </div>
-      
-    </section>
-    <section class="room__container" id="accademics_posts">
-      <p class="section__subheader">SPORTS Category</p>
-      <div class="room__grid">
-        <% posts.forEach(post => { %>
-          <% if (post.category === 'sports') { %> <!-- Check if the post is in the 'academics' category -->
-            <div class="room__card">
-              <% if (post.media_url.endsWith('.mp4')) { %>
-                <video controls autoplay loop class="post-image">
-                  <source src="/<%= post.media_url %>" type="video/mp4" class="post-image">
-                  Your browser does not support the video tag.
-                </video>
-              <% } else { %>
-                <img src="/<%= post.media_url %>" alt="Post image">
-              <% } %>
-              <div class="room__card__details">
-                <div>
-                  <h4><%= post.title %></h4>
-                  <h3>
-                    <span>
-                      <%= new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
-                    </span>
-                  </h3>
-                  <p><%= post.description %> <br><span style="color: #f6ac0f; font-size: x-small;"><%= post.location %></span></p>
-                </div>
-                
-              </div>
-            </div>
-          <% } %> <!-- Close the category check -->
-        <% }) %>
-      </div>
-      
-    </section>
-
-    <section class="intro">
-      <div class="section__container intro__container">
-        <div class="intro__cotent">
-          <p class="section__subheader">INTRO VIDEO</p>
-          <h2 class="section__header">Begin planning your career with us!</h2>
-          <p class="section__description">
-            University of Mpumalanga (UMP) registered students have the opportunity 
-            to apply for various bursaries to enable them to study at the University.
-          </p>
-          <a href="https://ienabler.ump.ac.za/pls/prodi41/gen.gw1pkg.gw1view">
-            <button class="btn">Apply Now</button>
-          </a>
-        </div>
-        <div class="intro__video">
-          <video src="/img/luxury.mp4" autoplay muted loop></video>
-        </div>
-      </div>
-    </section>
-
     <section class="section__container feature__container" id="feature">
       <p class="section__subheader">FACILITIES</p>
       <h2 class="section__header">UMP Values</h2>
@@ -291,6 +175,62 @@
         </div>
       </div>
     </section>
+    <section class="room__container" id="All_Posts">
+      <p class="section__subheader">All Posts</p>
+      <h2 class="section__header">University Gallery</h2>
+      <div class="room__grid">
+        <% posts.forEach(post => { %>
+          <div class="room__card">
+            <% if (post.media_url.endsWith('.mp4')) { %>
+              <video controls autoplay loop class="post-image">
+                <source 
+                  src="/<%= post.media_url %>" 
+                  type="video/mp4" 
+                  class="post-image"
+                >
+                Your browser does not support the video tag.
+              </video>
+            <% } else { %>
+              <img src="/<%= post.media_url %>" alt="Post image">
+            <% } %>
+            <div class="room__card__details">
+              <div>
+                <h4><%= post.title %></h4>
+                <p><%= post.description %> <br><span style="color: #f6ac0f; font-size: x-small;"><%= post.location %></span></p>
+              </div>
+              <h3>
+                <span>
+                  <%= new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
+                </span>
+              </h3>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+    
+    <!--  -->
+
+    <section class="intro">
+      <div class="section__container intro__container">
+        <div class="intro__cotent">
+          <p class="section__subheader">INTRO VIDEO</p>
+          <h2 class="section__header">Begin planning your career with us!</h2>
+          <p class="section__description">
+            University of Mpumalanga (UMP) registered students have the opportunity 
+            to apply for various bursaries to enable them to study at the University.
+          </p>
+          <a href="https://ienabler.ump.ac.za/pls/prodi41/gen.gw1pkg.gw1view">
+            <button class="btn">Apply Now</button>
+          </a>
+        </div>
+        <div class="intro__video">
+          <video src="/img/luxury.mp4" autoplay muted loop></video>
+        </div>
+      </div>
+    </section>
+
+    
 
     <section class="menu" id="menu">
       <div class="section__container menu__container">

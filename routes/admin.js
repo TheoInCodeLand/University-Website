@@ -2,6 +2,25 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config/db');
 const bcrypt = require('bcryptjs');
+// Handle new post creation
+const multer = require('multer');
+const path = require('path');
+
+// Set up multer to store files in the uploads folder
+const upload = multer({
+  dest: 'public/uploads/',  // Specify the destination folder
+  fileFilter: (req, file, cb) => {
+    const filetypes = /jpeg|jpg|png|gif|mp4|avi/; // Allowed file types
+    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+    const mimetype = filetypes.test(file.mimetype);
+
+    if (mimetype && extname) {
+      return cb(null, true);
+    } else {
+      cb('Error: Invalid file type');
+    }
+  },
+});
 
 // Middleware to check if admin is logged in
 function checkAdmin(req, res, next) {
@@ -11,6 +30,15 @@ function checkAdmin(req, res, next) {
     res.redirect('/auth/login');  // Redirect to login if not authenticated
   }
 }
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'public/uploads/'); // Store in the 'public/uploads' directory
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, uniqueSuffix + path.extname(file.originalname)); // Save with a unique name
+  }
+});
 
 // ========== Admin Dashboard Route ==========
 router.get('/dashboard', checkAdmin, (req, res) => {
@@ -33,11 +61,15 @@ router.get('/posts/new', checkAdmin, (req, res) => {
   res.render('admin/new-post');
 });
 
-// Handle new post creation
-router.post('/posts/new', checkAdmin, (req, res) => {
-  const { title, description, category, date, location, media_url } = req.body;
+
+
+router.post('/posts/new', checkAdmin, upload.single('media'), (req, res) => {
+  const { title, description, category, date, location } = req.body;
+  const media_url = req.file ? path.join('uploads', req.file.filename) : null; // Save the file path
+
   const sql = `INSERT INTO posts (title, description, category, date, location, media_url)
                VALUES (?, ?, ?, ?, ?, ?)`;
+
   db.run(sql, [title, description, category, date, location, media_url], function(err) {
     if (err) {
       return console.error(err.message);
@@ -45,6 +77,7 @@ router.post('/posts/new', checkAdmin, (req, res) => {
     res.redirect('/admin/posts');
   });
 });
+
 
 // Delete a post
 router.post('/posts/delete/:id', checkAdmin, (req, res) => {
