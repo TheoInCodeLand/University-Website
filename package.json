@@ -8,7 +8,7 @@
     "dev": "nodemon app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Theophilus Thobejane | TheoInCodeLand",
   "license": "ISC",
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
